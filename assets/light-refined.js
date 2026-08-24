@@ -19,9 +19,34 @@
   const projectGrid = document.querySelector('.project-grid');
   const projectCards = [...document.querySelectorAll('.project-grid .project')];
   const projectDots = [...document.querySelectorAll('[data-project-dot]')];
+  const factoryTrack = document.querySelector('[data-factory-track]');
+  const factorySlides = [...document.querySelectorAll('.factory-slide')];
+  const factoryDots = [...document.querySelectorAll('[data-factory-dot]')];
+
+  const getCurrentFactorySlide = () => {
+    if (!factoryTrack || !factorySlides.length) return 0;
+    return factorySlides.reduce((closest, slide, index) => {
+      const distance = Math.abs(slide.offsetLeft - factoryTrack.offsetLeft - factoryTrack.scrollLeft);
+      return distance < closest.distance ? { index, distance } : closest;
+    }, { index: 0, distance: Infinity }).index;
+  };
+
+  const showFactorySlide = (index) => {
+    if (!factoryTrack || !factorySlides.length) return;
+    const target = Math.max(0, Math.min(index, factorySlides.length - 1));
+    factoryTrack.scrollTo({ left: factorySlides[target].offsetLeft - factoryTrack.offsetLeft, behavior: 'smooth' });
+    factoryDots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === target));
+  };
+
+  factoryDots.forEach((dot, index) => dot.addEventListener('click', () => showFactorySlide(index)));
+  factoryTrack?.addEventListener('scroll', () => {
+    const current = getCurrentFactorySlide();
+    factoryDots.forEach((dot, index) => dot.classList.toggle('is-active', index === current));
+  }, { passive: true });
 
   const closeMenu = () => {
     header?.classList.remove('menu-open');
+    document.body.classList.remove('menu-open');
     menuToggle?.setAttribute('aria-expanded', 'false');
     menuToggle?.setAttribute('aria-label', 'Открыть меню');
   };
@@ -29,9 +54,11 @@
   menuToggle?.addEventListener('click', () => {
     const willOpen = !header?.classList.contains('menu-open');
     header?.classList.toggle('menu-open', willOpen);
+    document.body.classList.toggle('menu-open', willOpen);
     menuToggle.setAttribute('aria-expanded', String(willOpen));
     menuToggle.setAttribute('aria-label', willOpen ? 'Закрыть меню' : 'Открыть меню');
   });
+  navLinks.forEach((link) => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMenu();
   });
