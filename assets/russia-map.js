@@ -31,10 +31,10 @@
     { name: 'Новосибирск', lat: 55.0084, lon: 82.9357, dx: 15, dy: 28 },
     { name: 'Барнаул', lat: 53.3548, lon: 83.7698, dx: -15, dy: 45 },
     { name: 'Красноярск', lat: 56.0153, lon: 92.8932, dx: 15, dy: -10 },
-    { name: 'Севастополь', lat: 44.6167, lon: 33.5254, dx: -120, dy: -15, mapDx: 26 },
+    { name: 'Севастополь', lat: 44.6167, lon: 33.5254, dx: 18, dy: -34, mapDx: 36 },
     { name: 'Ростов-на-Дону', lat: 47.2357, lon: 39.7015, dx: -125, dy: 5 },
-    { name: 'Анапа', lat: 44.8948, lon: 37.3163, dx: -115, dy: 8 },
-    { name: 'Краснодар', lat: 45.0355, lon: 38.9753, dx: -115, dy: 30 },
+    { name: 'Анапа', lat: 44.8948, lon: 37.3163, dx: 18, dy: 2 },
+    { name: 'Краснодар', lat: 45.0355, lon: 38.9753, dx: 18, dy: 38 },
     { name: 'Ессентуки', lat: 44.0445, lon: 42.8606, dx: 15, dy: 12 },
     { name: 'Южно-Сахалинск', lat: 46.9591, lon: 142.738, dx: -140, dy: 35, major: true }
   ];
@@ -73,7 +73,8 @@
         const fontSize = city.major ? 17 : 14;
         const labelWidth = Math.max(72, city.name.length * fontSize * 0.6 + 24);
         const labelHeight = city.major ? 34 : 30;
-        const labelX = city.dx || 15;
+        const preferredLabelX = city.dx || 15;
+        const labelX = Math.max(12 - cityX, Math.min(preferredLabelX, width - 12 - cityX - labelWidth));
         const labelY = city.dy || -15;
 
         inner.append('line').attr('class', 'map-city-line').attr('x1', 0).attr('y1', 0).attr('x2', labelX > 0 ? labelX : labelX + labelWidth).attr('y2', labelY);
