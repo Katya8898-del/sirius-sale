@@ -232,3 +232,90 @@ main{display:block}
   .hero{min-height:calc(100svh - 100px);padding-bottom:0}
   .company-section{padding-top:36px}
 }
+
+/* Планшеты: отдельная композиция между мобильной и широкой десктопной версиями. */
+@media(min-width:761px) and (max-width:1180px){
+  :root{--container:calc(100vw - 64px);--title:clamp(64px,9vw,96px);--h2:clamp(46px,6.5vw,72px);--accent:clamp(52px,7vw,76px);--text:18px;--small:14px}
+  section[id]{scroll-margin-top:80px}
+  .company-section,.section,.dynamics,.clients,.projects,.asset-section,.debt-section,.reason-section,.team-section,.geography,.production,.finance{padding-top:84px;padding-bottom:84px}
+  .section-head,.clients-intro{margin-bottom:44px;gap:40px}
+
+  .site-header{height:82px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(180deg,rgba(6,7,8,.9),rgba(6,7,8,.32))}
+  .site-header.scrolled,.site-header.is-scrolled{height:72px;background:rgba(8,9,10,.94)}
+  .logo-version-two{width:148px}
+  .header-cta{display:none}
+  .menu-toggle{display:flex;z-index:3;width:48px;height:48px;padding:0;border:1px solid rgba(255,255,255,.3);border-radius:4px;background:#0d0e0f;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+  .menu-toggle span{display:block;width:22px;height:1px;background:#fff;transition:transform .25s ease,opacity .2s ease}
+  .menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .site-nav{display:none;position:fixed;inset:82px 0 auto;width:100%;padding:24px 32px 34px;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 42px;background:rgba(7,8,9,.98);border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 24px 50px rgba(0,0,0,.28);font-size:22px}
+  .site-header.menu-open{background:#070809}
+  .site-header.menu-open .site-nav{display:grid}
+  .site-nav a{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .site-nav a:after{bottom:10px}
+
+  .hero{min-height:max(100svh,780px)}
+  .hero-image{object-position:58% center}
+  .hero-content{padding:136px 0 66px}
+  .hero h1{max-width:900px;line-height:.9}
+  .hero-lead{max-width:650px;margin:26px 0 24px}
+  .button{min-width:330px}
+  .confidential-note{display:none}
+
+  .company-section{min-height:auto;display:block}
+  .company-layout{grid-template-columns:1fr;gap:48px}
+  .company-intro{min-height:auto;gap:54px}
+  .company-intro h2{max-width:900px;margin:24px 0}
+  .company-site-note{max-width:760px}
+  .company-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-right:0}
+  .company-metrics .company-main-metric{grid-column:1/-1;min-height:250px}
+  .company-metrics .company-main-metric b{font-size:clamp(118px,19vw,180px)}
+  .company-metrics article:not(.company-main-metric){display:flex;min-height:190px;padding:24px;gap:24px;align-items:flex-start}
+  .company-metrics article:not(.company-main-metric) b{font-size:clamp(48px,7vw,68px)}
+
+  .finance-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .finance-cards article{min-height:230px;padding:24px;border-bottom:0}
+  .client-facts article{min-height:185px;padding:24px}
+  .partner-list{grid-template-columns:repeat(2,1fr)}
+
+  .projects-count-heading{align-items:center}
+  .projects-count-heading strong{font-size:clamp(120px,18vw,190px)}
+  .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(5,340px);gap:7px;overflow:visible;padding:0}
+  .project{width:auto;height:auto;min-height:0;max-height:none;flex:none}
+  .project-featured{grid-column:1;grid-row:1/3}
+  .project-panorama{grid-column:2;grid-row:1}
+  .project-grid .project:nth-child(3){grid-column:2;grid-row:2}
+  .project-grid .project:nth-child(4){grid-column:1;grid-row:3}
+  .project-wide-left{grid-column:2;grid-row:3}
+  .project-tall-right{grid-column:1;grid-row:4/6}
+  .project-square-left{grid-column:2;grid-row:4}
+  .project-square-center{grid-column:2;grid-row:5}
+  .project div{left:22px;right:22px;top:22px}
+  .project h3{font-size:clamp(25px,3.4vw,36px)}
+
+  .geography-heading{grid-template-columns:1.2fr .8fr;gap:42px;margin-bottom:28px}
+  .map-swipe-hint{display:flex;align-items:center;justify-content:flex-end;gap:9px;margin:0 2px 12px;color:#aaa7a4;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  .map-swipe-hint svg{width:28px;height:12px}.map-swipe-hint path{fill:none;stroke:var(--violet);stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+  .projects-map-scroller{overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;touch-action:auto;-webkit-overflow-scrolling:touch}
+  .projects-map-canvas{width:1200px;min-width:1200px}
+  .projects-map-canvas svg{width:1200px;max-width:none}
+
+  .property-fact{grid-template-columns:.8fr 1.2fr;gap:32px}
+  .asset-catalog{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .asset-catalog article{min-height:270px;border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+  .asset-catalog article:nth-child(2n){border-right:0!important}
+  .asset-catalog article:nth-child(n+5){border-bottom:0!important}
+  .factory-panel{height:56vh;min-height:480px}
+
+  .debt-grid{grid-template-columns:.58fr 1.42fr;gap:44px}
+  .debt-section .zero{font-size:clamp(110px,18vw,190px)}
+  .roles article{min-height:145px;padding:22px}
+
+  .contact{padding:84px 0 62px}
+  .contact-content{grid-template-columns:1fr;gap:42px}
+  .contact-copy h2{max-width:900px}
+  .contact-confidentiality{max-width:none}
+  .agent-card{width:min(520px,100%);justify-self:end}
+  .agent-card .button{width:100%}
+}
