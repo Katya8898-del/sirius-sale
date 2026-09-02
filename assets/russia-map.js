@@ -53,7 +53,7 @@
       svg.append('g').attr('class', 'map-country').selectAll('path').data(features).join('path').attr('class', 'country-shape').attr('d', path);
       const layer = svg.append('g').attr('class', 'cities-layer');
 
-      cities.forEach((city) => {
+      cities.forEach((city, cityIndex) => {
         const coords = projection([city.lon, city.lat]);
         if (!coords) return;
         const cityX = coords[0] + (city.mapDx || 0);
@@ -61,12 +61,14 @@
         const cityGroup = layer.append('g')
           .attr('class', `map-city${city.major ? ' major' : ''}`)
           .attr('transform', `translate(${cityX},${cityY})`)
+          .style('--pulse-delay', `${-(cityIndex % 8) * 0.24}s`)
           .attr('tabindex', city.major ? null : 0)
           .attr('role', city.major ? null : 'button')
           .attr('aria-label', city.major ? null : city.name);
         const inner = cityGroup.append('g').attr('class', 'map-city-inner');
 
         inner.append('circle').attr('class', 'map-city-hit').attr('r', 14);
+        if (!city.major) inner.append('circle').attr('class', 'map-city-pulse').attr('r', 7);
         inner.append('circle').attr('class', 'map-city-dot').attr('r', 5);
         inner.append('title').text(city.name);
 
