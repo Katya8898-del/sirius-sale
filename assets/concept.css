@@ -412,3 +412,7 @@ main{display:block}
 @media(min-width:1181px){
   .hero-bottom{flex-direction:column;align-items:flex-start;gap:18px}
 }
+
+@media(max-width:760px){
+  .company-name-line{display:block}
+}
