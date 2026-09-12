@@ -422,5 +422,5 @@ main{display:block}
 }
 
 @media(min-width:1181px){
-  .hero-image-desktop{object-position:center top}
+  .hero-image-desktop{object-position:center 8%}
 }
