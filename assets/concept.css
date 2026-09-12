@@ -420,3 +420,7 @@ main{display:block}
   .hero-image-desktop{display:none}
   .hero-image-mobile{display:block;object-position:center 42%}
 }
+
+@media(min-width:1181px){
+  .hero-image-desktop{object-position:center top}
+}
