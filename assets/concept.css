@@ -176,7 +176,7 @@ main{display:block}
 .company-site-wrap .company-site{display:block;padding-top:0;border-top:0}
 .company-site-note{max-width:620px;margin:18px 0 0;color:#aaa7a4;font-size:13px;line-height:1.5}
 .contact{min-height:980px}
-.contact-image img{object-position:center;filter:brightness(.48) saturate(.78)}
+.contact-image img{object-position:center;filter:brightness(.34) saturate(.68) blur(2px);transform:scale(1.012)}
 .contact-overlay{background:linear-gradient(90deg,rgba(5,6,7,.97),rgba(6,7,8,.84) 58%,rgba(6,7,8,.46)),linear-gradient(0deg,rgba(4,5,6,.88),transparent 62%)}
 .contact-copy .contact-lead{max-width:780px;margin:38px 0 0;color:#c4c2bf;font-size:var(--text);line-height:1.55}
 .contact-confidentiality{max-width:800px;margin-top:28px;padding:22px 24px;border:1px solid rgba(181,145,205,.2);border-left:3px solid var(--violet);border-radius:3px;background:rgba(10,11,13,.74);backdrop-filter:blur(10px)}
